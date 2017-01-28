@@ -17,4 +17,15 @@ public class RecordList {
         recordList.add(record);
     }
 
+    public Record getStudent(){
+        return recordList.get(0);
+    }
+
+    public ArrayList<Record> getRecordList(){
+        return recordList;
+    }
+
+//    public Record getStudent(Integer pos){
+//        return recordList.get(pos);
+//    }
 }
