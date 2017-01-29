@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="@string/record_name"
         android:ems="10"
         android:id="@+id/addNameText"
         android:layout_alignParentTop="true"
@@ -63,7 +63,7 @@
         android:layout_below="@+id/addNeckText"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:text="Bust circumference in inches" />
+        android:hint="@string/record_bust" />
 
     <EditText
         android:layout_width="wrap_content"

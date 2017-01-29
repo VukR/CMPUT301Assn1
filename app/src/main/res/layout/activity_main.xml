@@ -19,7 +19,6 @@
         android:layout_marginTop="77dp" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/totalRecordTextView"
@@ -28,7 +27,7 @@
         android:layout_toStartOf="@+id/addRecordButton" />
 
     <Button
-        android:text="Add"
+        android:text="@string/add_record"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addRecordButton"

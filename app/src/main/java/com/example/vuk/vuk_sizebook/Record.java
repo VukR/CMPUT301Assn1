@@ -8,10 +8,7 @@ import java.io.Serializable;
 
 public class Record implements Serializable {
     protected String name;
-
-//    public Record(String name){
-//        this.name = name;
-//    }
+    protected String bust;
 
     public Record(){
     }
@@ -22,5 +19,13 @@ public class Record implements Serializable {
 
     public void setName(String name){
         this.name = name;
+    }
+
+    public void setBust(String bust){
+        this.bust = bust;
+    }
+
+    public String getBust(){
+        return bust;
     }
 }

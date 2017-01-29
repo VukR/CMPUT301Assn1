@@ -15,7 +15,8 @@ import java.io.Serializable;
 public class AddRecordActivity extends AppCompatActivity {
 
     private Button completeButton;
-    private EditText nameEdit;
+
+    private EditText nameEdit, bustEdit;
 
     private Record newRecord;
 
@@ -26,6 +27,7 @@ public class AddRecordActivity extends AppCompatActivity {
 
         completeButton = (Button)findViewById(R.id.completeRecordButton);
         nameEdit = (EditText)findViewById(R.id.addNameText);
+        bustEdit = (EditText) findViewById(R.id.addBustText);
 
         completeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -36,6 +38,7 @@ public class AddRecordActivity extends AppCompatActivity {
                 else if(!nameEdit.getText().toString().equals("")){
                     newRecord = new Record();
                     newRecord.setName(nameEdit.getText().toString());
+                    newRecord.setBust(bustEdit.getText().toString());
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("result", newRecord);
                     setResult(RESULT_OK, returnIntent);
@@ -46,4 +49,6 @@ public class AddRecordActivity extends AppCompatActivity {
         });
 
     }
+
+
 }
