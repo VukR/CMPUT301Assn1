@@ -34,13 +34,9 @@ public class AddRecordActivity extends AppCompatActivity {
                     nameEdit.setError("Name is a mandatory field");
                 }
                 else if(!nameEdit.getText().toString().equals("")){
-                    //Log.d("test1", "name is not empty");
-                    //newRecord = new Record(nameEdit.getText().toString());
                     newRecord = new Record();
                     newRecord.setName(nameEdit.getText().toString());
-                    Log.d("test2", "Name is " + newRecord.getName());
                     Intent returnIntent = new Intent();
-                    //returnIntent.putExtra("result", newRecord.getName());
                     returnIntent.putExtra("result", newRecord);
                     setResult(RESULT_OK, returnIntent);
                     finish();

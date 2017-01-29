@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -20,11 +21,12 @@ public class MainActivity extends AppCompatActivity {
 
     private Button addButton;
     protected RecordList recordList;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+
+//    /**
+//     * ATTENTION: This was auto-generated to implement the App Indexing API.
+//     * See https://g.co/AppIndexing/AndroidStudio for more information.
+//     */
+//    private GoogleApiClient client;
 
 
     @Override
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addButton = (Button) findViewById(R.id.addRecordButton);
+        recordList = new RecordList();
+        updateTextView(recordList);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+//        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
@@ -55,62 +59,64 @@ public class MainActivity extends AppCompatActivity {
         //RecordList recordList;
         Record returnRecord;
         if (requestCode == 0) {
-            Log.d("test 5", "the resultCode ia " + resultCode);
             if (resultCode == RESULT_OK) {
-//                String result = data.getStringExtra("result");
-//                Log.d("test3", "In main activity name returned is " + result);
                 returnRecord = (Record) data.getSerializableExtra("result");
-                Log.d("test3", "In main activity name returned is " + returnRecord.getName());
-                recordList = new RecordList();
                 recordList.addRecord(returnRecord);
-                Log.d("test6", "The first record from Tecord array us " + recordList.getStudent().getName());
+
+//                for (int i = 0; i < recordList.size(); i++){
+//                    Log.d("updating of listview", recordList.getStudent(i).getName() + " is item " + i);
+//                }
 
                 RecordAdapter adapter = new RecordAdapter(this, recordList.getRecordList());
                 ListView listView = (ListView) findViewById(R.id.recordListView);
                 listView.setAdapter(adapter);
+                updateTextView(recordList);
 
-                //recordList.get(0);
-                //Log.d("test6", "recordList first item is " + recordList[0].getName());
-            } else {
+            }
+            else {
                 Log.d("test4", "fucked up returning to main activity");
             }
         }
     }
 
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Main Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
+    public void updateTextView(RecordList recordList){
+        TextView textView = (TextView) findViewById(R.id.totalRecordTextView);
+        textView.setText(getString(R.string.record_count, recordList.size()));
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
+//    /**
+//     * ATTENTION: This was auto-generated to implement the App Indexing API.
+//     * See https://g.co/AppIndexing/AndroidStudio for more information.
+//     */
+//    public Action getIndexApiAction() {
+//        Thing object = new Thing.Builder()
+//                .setName("Main Page") // TODO: Define a title for the content shown.
+//                // TODO: Make sure this auto-generated URL is correct.
+//                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
+//                .build();
+//        return new Action.Builder(Action.TYPE_VIEW)
+//                .setObject(object)
+//                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+//                .build();
+//    }
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        client.connect();
+//        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//
+//        // ATTENTION: This was auto-generated to implement the App Indexing API.
+//        // See https://g.co/AppIndexing/AndroidStudio for more information.
+//        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+//        client.disconnect();
+//    }
 }

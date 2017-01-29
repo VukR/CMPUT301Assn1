@@ -23,12 +23,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/totalRecordTextView"
-        android:textSize="36sp"
+        android:textSize="20sp"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/addRecordButton" />
 
     <Button
-        android:text="Button"
+        android:text="Add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/addRecordButton"

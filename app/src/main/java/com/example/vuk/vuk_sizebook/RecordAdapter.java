@@ -14,6 +14,10 @@ import java.util.ArrayList;
  * Created by Vuk on 1/28/2017.
  */
 
+/** Source from where RecordAdapter class is taken from
+https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
+ **/
+
 public class RecordAdapter extends ArrayAdapter<Record> {
 
     public RecordAdapter(Context context, ArrayList<Record> records){

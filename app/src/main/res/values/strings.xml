@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">vuk-SizeBook</string>
+
+    <string name = "record_count"> Total number of records: %1$d</string>
 </resources>
