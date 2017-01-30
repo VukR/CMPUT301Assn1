@@ -65,9 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                 alert.setTitle("Record Options");
                 alert.setMessage("Choose an option please");
-                alert.setPositiveButton("Edit/View Record", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton("Edit Record", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        editHabit(record);
+                        recordList.deleteRecord(record);
                         Log.d("TEST 4", "Edit Record Button Was Clicked");
                         dialog.dismiss();
                     }
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                alert.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                alert.setNeutralButton("View Record", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Log.d("TEST 4", "Cancel Record Button Was Clicked");
@@ -102,6 +104,13 @@ public class MainActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
 //        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+
+    public void editHabit(Record record){
+        Intent intent = new Intent(MainActivity.this, EditRecordActivity.class);
+        intent.putExtra("edit", record);
+        startActivityForResult(intent, 1);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -125,6 +134,14 @@ public class MainActivity extends AppCompatActivity {
             }
             else {
                 Log.d("test4", "fucked up returning to main activity");
+            }
+        }
+        else if (requestCode == 1){
+            if(resultCode == RESULT_OK) {
+                returnRecord = (Record) data.getSerializableExtra("Edit Result");
+                recordList.addRecord(returnRecord);
+                adapter.notifyDataSetChanged();
+                //updateTextView(recordList);
             }
         }
     }

@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">vuk-SizeBook</string>
 
-    <string name = "record_count"> Total number of records: %1$d </string>
-    <string name = "add_record"> Add New Record </string>
-    <string name = "record_name"> Name </string>
-    <string name = "record_bust"> Bust circumference in inches </string>
+    <string name="record_count"> Total number of records: %1$d </string>
+    <string name="add_record"> Add New Record </string>
+    <string name="record_name"> Name </string>
+    <string name="record_bust"> Bust circumference in inches </string>
 
 
 </resources>

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_add_record"
+    android:id="@+id/activity_edit_record"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.vuk.vuk_sizebook.AddRecordActivity">
+    tools:context="com.example.vuk.vuk_sizebook.EditRecordActivity">
+
 
     <EditText
         android:layout_width="wrap_content"
@@ -16,9 +17,9 @@
         android:inputType="textPersonName"
         android:hint="@string/record_name"
         android:ems="10"
-        android:id="@+id/addNameText"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:id="@+id/editNameText"
         android:layout_alignParentEnd="true" />
 
     <EditText
@@ -26,53 +27,53 @@
         android:layout_height="wrap_content"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/addDateText"
-        android:text="Date yyyy-mm-dd"
-        android:layout_below="@+id/addNameText"
+        android:layout_below="@+id/editNameText"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:layout_below="@+id/addDateText"
-        android:layout_alignParentStart="true"
-        android:id="@+id/addNeckText"
-        android:text="Neck circumference in inches"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:layout_below="@+id/addHipText"
-        android:layout_alignParentStart="true"
-        android:id="@+id/addInseamText"
+        android:id="@+id/editDateText"
         android:layout_alignParentEnd="true"
-        android:text="Inseam length in inches" />
+        android:text="Date yyyy-mm-dd" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/addBustText"
-        android:layout_below="@+id/addNeckText"
+        android:layout_below="@+id/editDateText"
         android:layout_alignParentStart="true"
+        android:id="@+id/editNeckText"
         android:layout_alignParentEnd="true"
-        android:hint="@string/record_bust" />
+        android:text="Neck circumference in inches" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/addWaistText"
-        android:layout_below="@+id/addChestText"
+        android:layout_below="@+id/editNeckText"
         android:layout_alignParentStart="true"
+        android:id="@+id/editBustText"
+        android:layout_alignParentEnd="true"
+        android:text="Bust circumference in inches" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_below="@+id/editBustText"
+        android:layout_alignEnd="@+id/editBustText"
+        android:id="@+id/editChestText"
+        android:layout_alignParentStart="true"
+        android:text="Chest circumference in inches" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_below="@+id/editChestText"
+        android:layout_alignParentStart="true"
+        android:id="@+id/editWaistText"
         android:layout_alignParentEnd="true"
         android:text="Waist circumference in inches" />
 
@@ -81,42 +82,41 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/addChestText"
-        android:layout_below="@+id/addBustText"
+        android:layout_below="@+id/editWaistText"
         android:layout_alignParentStart="true"
+        android:id="@+id/editHipText"
         android:layout_alignParentEnd="true"
-        android:text="Chest circumference in inches" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/addHipText"
-        android:layout_below="@+id/addWaistText"
-        android:layout_alignParentStart="true"
-        android:text="Hip circumference in inches"
-        android:layout_alignParentEnd="true" />
+        android:text="Hip circumference in inches" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/addCommentText"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/editCommentText"
         android:text="Comment Section"
-        android:layout_below="@+id/addInseamText"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/completeRecordButton" />
+        android:layout_below="@+id/editInseamText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_below="@+id/editHipText"
+        android:id="@+id/editInseamText"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:text="Inseam length in inches" />
 
     <Button
         android:text="Submit Record"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/completeRecordButton"
+        android:id="@+id/editSubmitButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/addInseamText" />
+        android:layout_below="@+id/editInseamText" />
 
 </RelativeLayout>
