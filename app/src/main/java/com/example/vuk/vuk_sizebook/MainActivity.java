@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                 alert.setTitle("Record Options");
                 alert.setMessage("Choose an option please");
+
                 alert.setPositiveButton("Edit Record", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -90,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Log.d("TEST 4", "Cancel Record Button Was Clicked");
+                        Intent intent = new Intent(MainActivity.this, ViewRecordActivity.class);
+                        intent.putExtra("view", record);
+                        startActivity(intent);
                         dialog.dismiss();
                     }
                 });
