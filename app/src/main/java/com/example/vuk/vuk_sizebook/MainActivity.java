@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
          **/
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id) {
+
+                 final Record record = recordList.getRecordList().get(pos);
+
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                 alert.setTitle("Record Options");
                 alert.setMessage("Choose an option please");
@@ -74,7 +77,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Log.d("TEST 4", "Delete Record Button Was Clicked");
+                        recordList.deleteRecord(record);
                         dialog.dismiss();
+                        adapter.notifyDataSetChanged();
+                        updateTextView(recordList);
                     }
                 });
 

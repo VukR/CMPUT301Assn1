@@ -29,4 +29,8 @@ public class RecordList {
         return recordList.size();
     }
 
+    public void deleteRecord(Record record){
+        recordList.remove(record);
+    }
+
 }
