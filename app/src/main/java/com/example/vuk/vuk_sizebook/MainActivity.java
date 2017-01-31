@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             public boolean onItemLongClick(AdapterView<?> parent, View view, int pos, long id) {
 
-                 final Record record = recordList.getRecordList().get(pos);
+                final int position = pos;
+                final Record record = recordList.getRecordList().get(pos);
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                 alert.setTitle("Record Options");
@@ -69,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
                 alert.setPositiveButton("Edit Record", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        editHabit(record);
-                        recordList.deleteRecord(record);
+                        editRecord(record, position, recordList);
+                        //recordList.deleteRecord(record);
+                        //adapter.notifyDataSetChanged();
                         Log.d("TEST 4", "Edit Record Button Was Clicked");
                         dialog.dismiss();
                     }
@@ -109,9 +111,13 @@ public class MainActivity extends AppCompatActivity {
 //        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    public void editHabit(Record record){
+    public void editRecord(Record record, int position, RecordList recordList){
         Intent intent = new Intent(MainActivity.this, EditRecordActivity.class);
-        intent.putExtra("edit", record);
+//        Bundle extras = new Bundle();
+//        extras.putSerializable
+        intent.putExtra("editRecord", record);
+        intent.putExtra("editPosition", position);
+        intent.putExtra("editRecordList", recordList);
         startActivityForResult(intent, 1);
     }
 
@@ -142,10 +148,14 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (requestCode == 1){
             if(resultCode == RESULT_OK) {
-                returnRecord = (Record) data.getSerializableExtra("Edit Result");
-                recordList.addRecord(returnRecord);
-                adapter.notifyDataSetChanged();
-                //updateTextView(recordList);
+                recordList = (RecordList) data.getSerializableExtra("Edit Result");
+                //returnRecord = (Record) data.getSerializableExtra("Edit Result");
+                //Log.d("return Record", returnRecord.getName());
+                //recordList.addRecord(returnRecord);
+                //adapter.notifyDataSetChanged();
+                adapter = new RecordAdapter(this, recordList.getRecordList());
+                listView.setAdapter(adapter);
+                updateTextView(recordList);
             }
         }
     }
