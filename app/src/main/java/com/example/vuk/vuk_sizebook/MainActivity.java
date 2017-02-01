@@ -132,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
                 recordList.addRecord(returnRecord);
 
 //                for (int i = 0; i < recordList.size(); i++){
-//                    Log.d("updating of listview", recordList.getStudent(i).getName() + " is item " + i);
+//                    //Log.d("updating of listview", recordList.getStudent(i).getName() + " is item " + i);
+//                    Log.d("all fucking shit test", "Name: " + recordList.getStudent(i).getName() + " Bust: " + recordList.getStudent(i).getBust()+ " Student: " + recordList.getStudent(i).getChest()+ " Waist: " + recordList.getStudent(i).getWaist() + " Inseam: " + recordList.getStudent(i).getInseam());
 //                }
 
                 //RecordAdapter adapter = new RecordAdapter(this, recordList.getRecordList());

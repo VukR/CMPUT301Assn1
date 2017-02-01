@@ -1,10 +1,25 @@
 <resources>
     <string name="app_name">vuk-SizeBook</string>
 
-    <string name="record_count"> Total number of records: %1$d </string>
-    <string name="add_record"> Add New Record </string>
-    <string name="record_name"> Name </string>
-    <string name="record_bust"> Bust circumference in inches </string>
-
+    <string name = "record_count"> Total number of records: %1$d </string>
+    <string name = "add_record"> Add New Record </string>
+    <string name = "record_name"> Name </string>
+    <string name = "record_date"> yyyy-mm-dd </string>
+    <string name = "record_date1"> Date </string>
+    <string name = "record_neck"> Neck circumference in inches </string>
+    <string name = "record_neck1"> Neck </string>
+    <string name = "record_inseam"> Inseam length in inches </string>
+    <string name = "record_inseam1"> Inseam </string>
+    <string name = "record_bust"> Bust circumference in inches </string>
+    <string name = "record_bust1"> Bust </string>
+    <string name = "record_waist"> Waist circumference in inches </string>
+    <string name = "record_waist1"> Waist </string>
+    <string name = "record_chest"> Chest circumference in inches </string>
+    <string name = "record_chest1"> Chest </string>
+    <string name = "record_hip"> Hip circumference in inches </string>
+    <string name = "record_hip1"> Hip </string>
+    <string name = "record_comment"> Comment Section </string>
+    <string name = "record_submit"> Submit Record </string>
+    <string name = "record_unit"> Inches </string>
 
 </resources>

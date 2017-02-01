@@ -27,7 +27,7 @@
         android:inputType="date"
         android:ems="10"
         android:id="@+id/addDateText"
-        android:text="Date yyyy-mm-dd"
+        android:hint="@string/record_date"
         android:layout_below="@+id/addNameText"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
@@ -40,7 +40,7 @@
         android:layout_below="@+id/addDateText"
         android:layout_alignParentStart="true"
         android:id="@+id/addNeckText"
-        android:text="Neck circumference in inches"
+        android:hint="@string/record_neck"
         android:layout_alignParentEnd="true" />
 
     <EditText
@@ -52,7 +52,7 @@
         android:layout_alignParentStart="true"
         android:id="@+id/addInseamText"
         android:layout_alignParentEnd="true"
-        android:text="Inseam length in inches" />
+        android:hint="@string/record_inseam" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
         android:layout_below="@+id/addChestText"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:text="Waist circumference in inches" />
+        android:hint="@string/record_waist" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
         android:layout_below="@+id/addBustText"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:text="Chest circumference in inches" />
+        android:hint="@string/record_chest" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
         android:id="@+id/addHipText"
         android:layout_below="@+id/addWaistText"
         android:layout_alignParentStart="true"
-        android:text="Hip circumference in inches"
+        android:hint="@string/record_hip"
         android:layout_alignParentEnd="true" />
 
     <EditText
@@ -105,13 +105,13 @@
         android:ems="10"
         android:id="@+id/addCommentText"
         android:layout_alignParentBottom="true"
-        android:text="Comment Section"
+        android:hint="@string/record_comment"
         android:layout_below="@+id/addInseamText"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/completeRecordButton" />
 
     <Button
-        android:text="Submit Record"
+        android:text="@string/record_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/completeRecordButton"

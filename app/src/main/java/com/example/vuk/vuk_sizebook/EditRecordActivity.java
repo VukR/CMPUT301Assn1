@@ -14,7 +14,7 @@ public class EditRecordActivity extends AppCompatActivity {
 
     private Button completeButton;
 
-    private EditText nameEdit;
+    private EditText nameEdit, inseamEdit, bustEdit, waistEdit, chestEdit;
 
     private Record editRecord, newRecord;
 
@@ -29,6 +29,10 @@ public class EditRecordActivity extends AppCompatActivity {
 
         completeButton = (Button)findViewById(R.id.editSubmitButton);
         nameEdit = (EditText)findViewById(R.id.editNameText);
+        inseamEdit = (EditText) findViewById(R.id.editInseamText);
+        bustEdit = (EditText) findViewById(R.id.editBustText);
+        waistEdit = (EditText) findViewById(R.id.editWaistText);
+        chestEdit = (EditText) findViewById(R.id.editChestText);
 
         editRecord = (Record) getIntent().getSerializableExtra("editRecord");
         positionRecord = getIntent().getIntExtra("editPosition", 0);
@@ -47,6 +51,11 @@ public class EditRecordActivity extends AppCompatActivity {
                 else if(!nameEdit.getText().toString().equals("")){
                     newRecord = new Record();
                     newRecord.setName(nameEdit.getText().toString());
+                    newRecord.setBust(bustEdit.getText().toString());
+                    newRecord.setChest(chestEdit.getText().toString());
+                    newRecord.setWaist(waistEdit.getText().toString());
+                    newRecord.setInseam(inseamEdit.getText().toString());
+
                     editRecordList.getRecordList().set(positionRecord, newRecord);
                     //newRecord.setBust(bustEdit.getText().toString());
                     Intent returnIntent = new Intent();
@@ -62,6 +71,10 @@ public class EditRecordActivity extends AppCompatActivity {
 
     public void createEditSetup(Record editRecord){
         nameEdit.setText(editRecord.getName());
+        inseamEdit.setText(editRecord.getInseam());
+        bustEdit.setText(editRecord.getBust());
+        waistEdit.setText(editRecord.getWaist());
+        chestEdit.setText(editRecord.getChest());
     }
 
 }

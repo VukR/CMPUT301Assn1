@@ -7,8 +7,11 @@ import java.io.Serializable;
  */
 
 public class Record implements Serializable {
-    protected String name;
-    protected String bust;
+    private String name;
+    private String bust;
+    private String chest;
+    private String waist;
+    private String inseam;
 
     public Record(){
     }
@@ -27,5 +30,31 @@ public class Record implements Serializable {
 
     public String getBust(){
         return bust;
+    }
+
+
+    public void setChest(String chest) {
+        this.chest = chest;
+    }
+
+
+    public String getChest() {
+        return chest;
+    }
+
+    public void setWaist(String waist) {
+        this.waist = waist;
+    }
+
+    public String getWaist() {
+        return waist;
+    }
+
+    public void setInseam(String inseam) {
+        this.inseam = inseam;
+    }
+
+    public String getInseam() {
+        return inseam;
     }
 }

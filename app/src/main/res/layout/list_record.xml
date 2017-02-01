@@ -12,14 +12,32 @@
         <TextView
             android:id="@+id/nameText"
             android:layout_width="match_parent"
-            android:layout_height="62dp"
+            android:layout_height="wrap_content"
             android:textSize="40sp"/>
 
         <TextView
             android:id="@+id/bustText"
             android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:textSize="25sp"/>
+            android:layout_height="32dp"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:id="@+id/chestText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:id="@+id/waistText"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:id="@+id/inseamText"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
