@@ -16,7 +16,7 @@ public class AddRecordActivity extends AppCompatActivity {
 
     private Button completeButton;
 
-    private EditText nameEdit, dateEdit, neckEdit, inseamEdit,bustEdit, waistEdit, commentEdit, chestEdit, hipEdit;
+    private EditText nameEdit, dateEdit, neckEdit, inseamEdit, bustEdit, waistEdit, commentEdit, chestEdit, hipEdit;
 
     private Record newRecord;
 
@@ -27,14 +27,14 @@ public class AddRecordActivity extends AppCompatActivity {
 
         completeButton = (Button)findViewById(R.id.completeRecordButton);
         nameEdit = (EditText)findViewById(R.id.addNameText);
-//        dateEdit = (EditText) findViewById(R.id.addDateText);
-//        neckEdit = (EditText) findViewById(R.id.addNeckText);
+        //dateEdit = (EditText) findViewById(R.id.addDateText);
+        neckEdit = (EditText) findViewById(R.id.addNeckText);
         inseamEdit = (EditText) findViewById(R.id.addInseamText);
         bustEdit = (EditText) findViewById(R.id.addBustText);
         waistEdit = (EditText) findViewById(R.id.addWaistText);
         chestEdit = (EditText) findViewById(R.id.addChestText);
-//        hipEdit = (EditText) findViewById(R.id.addHipText);
-//        commentEdit = (EditText) findViewById(R.id.addCommentText);
+        hipEdit = (EditText) findViewById(R.id.addHipText);
+        commentEdit = (EditText) findViewById(R.id.addCommentText);
 
         completeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -46,10 +46,13 @@ public class AddRecordActivity extends AppCompatActivity {
                     newRecord = new Record();
                     newRecord.setName(nameEdit.getText().toString());
                     //newRecord.setDate(dateEdit.getText().toString());
+                    newRecord.setNeck(neckEdit.getText().toString());
                     newRecord.setBust(bustEdit.getText().toString());
                     newRecord.setChest(chestEdit.getText().toString());
                     newRecord.setWaist(waistEdit.getText().toString());
+                    newRecord.setHip(hipEdit.getText().toString());
                     newRecord.setInseam(inseamEdit.getText().toString());
+                    newRecord.setComment(commentEdit.getText().toString());
                     Intent returnIntent = new Intent();
                     returnIntent.putExtra("result", newRecord);
                     setResult(RESULT_OK, returnIntent);

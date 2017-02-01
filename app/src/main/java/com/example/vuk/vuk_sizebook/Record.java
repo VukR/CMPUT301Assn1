@@ -12,6 +12,10 @@ public class Record implements Serializable {
     private String chest;
     private String waist;
     private String inseam;
+    private String date;
+    private String neck;
+    private String hip;
+    private String comment;
 
     public Record(){
     }
@@ -32,11 +36,9 @@ public class Record implements Serializable {
         return bust;
     }
 
-
     public void setChest(String chest) {
         this.chest = chest;
     }
-
 
     public String getChest() {
         return chest;
@@ -57,4 +59,36 @@ public class Record implements Serializable {
     public String getInseam() {
         return inseam;
     }
+
+    public void setNeck(String neck) {
+        this.neck = neck;
+    }
+
+    public String getNeck() {
+        return neck;
+    }
+
+    public void setHip(String hip) {
+        this.hip = hip;
+    }
+
+    public String getHip() {
+        return hip;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+//    public void setDate(String date) {
+//        this.date = date;
+//    }
+//
+//    public String getDate() {
+//        return date;
+//    }
 }

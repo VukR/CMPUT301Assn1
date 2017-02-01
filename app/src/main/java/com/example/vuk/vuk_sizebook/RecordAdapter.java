@@ -37,40 +37,43 @@ public class RecordAdapter extends ArrayAdapter<Record> {
         }
 
         TextView tvName = (TextView) convertView.findViewById(R.id.nameText);
+        //TextView tvDate = (TextView) convertView.findViewById(R.id.inseamText);
         TextView tvBust = (TextView) convertView.findViewById(R.id.bustText);
         TextView tvChest = (TextView) convertView.findViewById(R.id.chestText);
         TextView tvWaist = (TextView) convertView.findViewById(R.id.waistText);
         TextView tvInseam = (TextView) convertView.findViewById(R.id.inseamText);
 
 
+
         tvName.setText(record.getName());
+        //tvDate.setText(record.getDate());
 
         if(record.getBust().equalsIgnoreCase("")){
             tvBust.setVisibility(View.GONE);
         }
         else {
-            tvBust.setText("Bust: " + record.getBust() + "inches");
+            tvBust.setText("Bust: " + record.getBust() + " inches");
         }
 //
         if(record.getChest().equalsIgnoreCase("")){
             tvChest.setVisibility(View.GONE);
         }
         else {
-            tvChest.setText("Chest: " + record.getChest() + "inches");
+            tvChest.setText("Chest: " + record.getChest() + " inches");
         }
 
         if(record.getWaist().equalsIgnoreCase("")){
             tvWaist.setVisibility(View.GONE);
         }
         else {
-            tvWaist.setText("Waist: " + record.getWaist() + "inches");
+            tvWaist.setText("Waist: " + record.getWaist() + " inches");
         }
 
         if(record.getInseam().equalsIgnoreCase("")){
             tvInseam.setVisibility(View.GONE);
         }
         else {
-            tvInseam.setText("Inseam: " + record.getInseam() + "inches");
+            tvInseam.setText("Inseam: " + record.getInseam() + " inches");
         }
 
         return convertView;

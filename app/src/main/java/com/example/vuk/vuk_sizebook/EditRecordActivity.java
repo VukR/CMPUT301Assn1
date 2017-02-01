@@ -14,7 +14,8 @@ public class EditRecordActivity extends AppCompatActivity {
 
     private Button completeButton;
 
-    private EditText nameEdit, inseamEdit, bustEdit, waistEdit, chestEdit;
+    private EditText nameEdit, inseamEdit, bustEdit, waistEdit, chestEdit, neckEdit, hipEdit, commentEdit;
+            //dateEdit;
 
     private Record editRecord, newRecord;
 
@@ -29,10 +30,14 @@ public class EditRecordActivity extends AppCompatActivity {
 
         completeButton = (Button)findViewById(R.id.editSubmitButton);
         nameEdit = (EditText)findViewById(R.id.editNameText);
+        //dateEdit = (EditText) findViewById(R.id.addDateText);
+        neckEdit = (EditText)findViewById(R.id.editNeckText);
         inseamEdit = (EditText) findViewById(R.id.editInseamText);
         bustEdit = (EditText) findViewById(R.id.editBustText);
         waistEdit = (EditText) findViewById(R.id.editWaistText);
         chestEdit = (EditText) findViewById(R.id.editChestText);
+        hipEdit = (EditText) findViewById(R.id.editHipText);
+        commentEdit = (EditText) findViewById(R.id.editCommentText);
 
         editRecord = (Record) getIntent().getSerializableExtra("editRecord");
         positionRecord = getIntent().getIntExtra("editPosition", 0);
@@ -51,13 +56,16 @@ public class EditRecordActivity extends AppCompatActivity {
                 else if(!nameEdit.getText().toString().equals("")){
                     newRecord = new Record();
                     newRecord.setName(nameEdit.getText().toString());
+                    //newRecord.setDate(dateEdit.getText().toString());
+                    newRecord.setNeck(neckEdit.getText().toString());
                     newRecord.setBust(bustEdit.getText().toString());
                     newRecord.setChest(chestEdit.getText().toString());
                     newRecord.setWaist(waistEdit.getText().toString());
+                    newRecord.setHip(hipEdit.getText().toString());
                     newRecord.setInseam(inseamEdit.getText().toString());
+                    newRecord.setComment(commentEdit.getText().toString());
 
                     editRecordList.getRecordList().set(positionRecord, newRecord);
-                    //newRecord.setBust(bustEdit.getText().toString());
                     Intent returnIntent = new Intent();
                     //returnIntent.putExtra("Edit Result", newRecord);
                     returnIntent.putExtra("Edit Result", editRecordList);
@@ -71,10 +79,14 @@ public class EditRecordActivity extends AppCompatActivity {
 
     public void createEditSetup(Record editRecord){
         nameEdit.setText(editRecord.getName());
+        //dateEdit.setText(editRecord.getDate());
+        neckEdit.setText(editRecord.getNeck());
         inseamEdit.setText(editRecord.getInseam());
         bustEdit.setText(editRecord.getBust());
         waistEdit.setText(editRecord.getWaist());
         chestEdit.setText(editRecord.getChest());
+        hipEdit.setText(editRecord.getHip());
+        commentEdit.setText(editRecord.getComment());
     }
 
 }
