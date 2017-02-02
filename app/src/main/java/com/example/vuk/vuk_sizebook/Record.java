@@ -1,6 +1,7 @@
 package com.example.vuk.vuk_sizebook;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Vuk on 1/22/2017.
@@ -12,6 +13,7 @@ public class Record implements Serializable {
     private String chest;
     private String waist;
     private String inseam;
+    //private Date date;
     private String date;
     private String neck;
     private String hip;
@@ -84,11 +86,11 @@ public class Record implements Serializable {
         return comment;
     }
 
-//    public void setDate(String date) {
-//        this.date = date;
-//    }
-//
-//    public String getDate() {
-//        return date;
-//    }
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
 }
