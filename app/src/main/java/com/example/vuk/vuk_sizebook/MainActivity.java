@@ -1,27 +1,35 @@
 package com.example.vuk.vuk_sizebook;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String FILENAME = "file.sav";
     private Button addButton;
     protected RecordList recordList;
     private ListView listView;
@@ -38,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //loadFromFile();
 
         addButton = (Button) findViewById(R.id.addRecordButton);
         listView = (ListView) findViewById(R.id.recordListView);
@@ -85,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         recordList.deleteRecord(record);
                         dialog.dismiss();
                         adapter.notifyDataSetChanged();
+                        saveInFile();
                         updateTextView(recordList);
                     }
                 });
@@ -140,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 //ListView listView = (ListView) findViewById(R.id.recordListView);
                 //listView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
+                saveInFile();
                 updateTextView(recordList);
 
             }
@@ -156,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
                 //adapter.notifyDataSetChanged();
                 adapter = new RecordAdapter(this, recordList.getRecordList());
                 listView.setAdapter(adapter);
+                saveInFile();
                 updateTextView(recordList);
             }
         }
@@ -164,6 +176,77 @@ public class MainActivity extends AppCompatActivity {
     public void updateTextView(RecordList recordList){
         TextView textView = (TextView) findViewById(R.id.totalRecordTextView);
         textView.setText(getString(R.string.record_count, recordList.size()));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        recordList = new RecordList();
+        loadFromFile();
+        adapter = new RecordAdapter(this, recordList.getRecordList());
+        listView.setAdapter(adapter);
+    }
+
+    private void loadFromFile() {
+        try {
+            FileInputStream fis = openFileInput(FILENAME);
+            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+
+            Gson gson = new Gson();
+
+            //Taken from http://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt
+            // 2017-01-24 18:19
+            Type listType = new TypeToken<ArrayList<Record>>(){}.getType();
+            ArrayList<Record> temp = gson.fromJson(in, listType);
+
+            //recordList = new RecordList();
+            recordList.setLoadRecordList(temp);
+
+//            if(temp.size() == 0){
+//
+//            }
+//            else{
+//                recordList.setLoadRecordList(temp);
+//            }
+//            for(int i = 0; i < temp.size(); i++){
+//                System.out.println("is this shit working: " + temp.get(i).getName() + "the fucking size is: " + temp.size());
+//            }
+            //tweetList = gson.fromJson(in, listType);
+
+        } catch (FileNotFoundException e) {
+            //ArrayList<Record> temp = new ArrayList<Record>();
+            //tweetList = new ArrayList<Tweet>();
+        } catch (IOException e) {
+            throw new RuntimeException();
+        }
+    }
+
+    private void saveInFile() {
+        try {
+            FileOutputStream fos = openFileOutput(FILENAME,
+                    Context.MODE_PRIVATE);
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
+
+
+//            for(int i = 0; i < recordList.getRecordList().size(); i++){
+//                System.out.println(recordList.getRecordList().get(i).getName());
+//            }
+
+            Gson gson = new Gson();
+            gson.toJson(recordList.getRecordList(), out);
+//            String json = gson.toJson(recordList.getRecordList());
+//            System.out.println(json);
+
+            out.flush();
+
+            fos.close();
+
+        } catch (FileNotFoundException e) {
+            // TODO: Handle the Exception properly later
+            throw new RuntimeException();
+        } catch (IOException e) {
+            throw new RuntimeException();
+        }
     }
 
 //    /**
@@ -202,3 +285,4 @@ public class MainActivity extends AppCompatActivity {
 //        client.disconnect();
 //    }
 }
+

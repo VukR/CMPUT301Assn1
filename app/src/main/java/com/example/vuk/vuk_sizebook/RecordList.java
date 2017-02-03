@@ -34,4 +34,7 @@ public class RecordList implements Serializable {
         recordList.remove(record);
     }
 
+    public void setLoadRecordList(ArrayList<Record> loadRecordList) {
+        this.recordList = loadRecordList;
+    }
 }
