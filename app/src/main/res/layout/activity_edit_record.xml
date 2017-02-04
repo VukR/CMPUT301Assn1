@@ -95,7 +95,8 @@
         android:id="@+id/editSubmitButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/editInseamText" />
+        android:layout_below="@+id/editInseamText"
+        android:text="@string/record_submit" />
 
     <EditText
         android:layout_width="wrap_content"

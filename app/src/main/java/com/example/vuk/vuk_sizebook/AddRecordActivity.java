@@ -1,23 +1,15 @@
 package com.example.vuk.vuk_sizebook;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.Time;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.util.Log;
-import android.widget.RelativeLayout;
 
-import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 /**http://stackoverflow.com/questions/308122/simple-regular-expression-for-a-decimal-with-a-precision-of-2
  * How to make the regex
@@ -45,7 +37,8 @@ public class AddRecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
 
-        regexStr =  "^([0-9]+(\\.[0-9]{1})?)?$";
+        //regexStr =  "^([0-9]+(\\.[0-9]{1})?)?$";
+        regexStr =  "^(\\d*\\.\\d{1})?$";
 
         completeButton = (Button)findViewById(R.id.completeRecordButton);
 
@@ -76,7 +69,7 @@ public class AddRecordActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
                         // TODO Auto-generated method stub
                     /*      Your code   to get date and time    */
-                        dateEdit.setText(selectedyear + "-" + selectedmonth + "-" + selectedday);
+                        dateEdit.setText(selectedyear + "-" + (selectedmonth + 1) +  "-" + selectedday);
                     }
                 },mYear, mMonth, mDay);
                 mDatePicker.setTitle("Select date");

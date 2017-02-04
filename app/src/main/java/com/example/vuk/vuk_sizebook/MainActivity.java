@@ -185,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
         loadFromFile();
         adapter = new RecordAdapter(this, recordList.getRecordList());
         listView.setAdapter(adapter);
+
     }
 
     private void loadFromFile() {
@@ -201,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
             //recordList = new RecordList();
             recordList.setLoadRecordList(temp);
+            updateTextView(recordList);
 
 //            if(temp.size() == 0){
 //
