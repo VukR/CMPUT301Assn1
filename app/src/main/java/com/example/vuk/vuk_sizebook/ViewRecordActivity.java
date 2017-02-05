@@ -4,37 +4,38 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-public class ViewRecordActivity extends AppCompatActivity {
+/*
+    ViewRecordActivity displays the chosen records information, regardless if they are empty or given.
+    Does not return anything to MainActivity
+ */
 
-    private TextView nameView, dateView, neckView, bustView, chestView, waistView, hipView, inseamView, commentView;
-    private Record viewRecord;
+public class ViewRecordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_record);
 
-        nameView= (TextView)findViewById(R.id.textViewName);
-        dateView = (TextView)findViewById(R.id.textViewDate);
-        neckView= (TextView)findViewById(R.id.textViewNeck);
-        bustView= (TextView)findViewById(R.id.textViewBust);
-        chestView= (TextView)findViewById(R.id.textViewChest);
-        waistView= (TextView)findViewById(R.id.textViewWaist);
-        hipView= (TextView)findViewById(R.id.textViewHip);
-        inseamView= (TextView)findViewById(R.id.textViewInseam);
-        commentView= (TextView)findViewById(R.id.textViewComment);
+        TextView nameView = (TextView) findViewById(R.id.textViewName);
+        TextView dateView = (TextView) findViewById(R.id.textViewDate);
+        TextView neckView = (TextView) findViewById(R.id.textViewNeck);
+        TextView bustView = (TextView) findViewById(R.id.textViewBust);
+        TextView chestView = (TextView) findViewById(R.id.textViewChest);
+        TextView waistView = (TextView) findViewById(R.id.textViewWaist);
+        TextView hipView = (TextView) findViewById(R.id.textViewHip);
+        TextView inseamView = (TextView) findViewById(R.id.textViewInseam);
+        TextView commentView = (TextView) findViewById(R.id.textViewComment);
 
-        viewRecord = (Record) getIntent().getSerializableExtra("view");
+        Record viewRecord = (Record) getIntent().getSerializableExtra("view");
 
-        //nameView.setText("Name: " + viewRecord.getName() + "");
         nameView.setText(getString(R.string.record_name_view, viewRecord.getName()));
         dateView.setText(getString(R.string.record_date_view, viewRecord.getDate()));
+        commentView.setText(getString(R.string.record_comment_view, viewRecord.getComment()));
 
         if(viewRecord.getNeck().equals("")){
             neckView.setText(getString(R.string.record_neck_view1));
         }
         else {
-            //neckView.setText("Neck: " + viewRecord.getNeck() + " inches");
             neckView.setText(getString(R.string.record_neck_view, viewRecord.getNeck()));
         }
 
@@ -42,7 +43,6 @@ public class ViewRecordActivity extends AppCompatActivity {
             bustView.setText(getString(R.string.record_bust_view1));
         }
         else {
-            //bustView.setText("Bust: " + viewRecord.getBust() + "inches");
             bustView.setText(getString(R.string.record_bust_view, viewRecord.getBust()));
         }
 
@@ -50,7 +50,6 @@ public class ViewRecordActivity extends AppCompatActivity {
             chestView.setText(getString(R.string.record_chest_view1));
         }
         else {
-            //chestView.setText("Chest: " + viewRecord.getChest() + "inches");
             chestView.setText(getString(R.string.record_chest_view, viewRecord.getChest()));
         }
 
@@ -58,7 +57,6 @@ public class ViewRecordActivity extends AppCompatActivity {
             waistView.setText(getString(R.string.record_waist_view1));
         }
         else {
-            //waistView.setText("Waist: " + viewRecord.getWaist() + "inches");
             waistView.setText(getString(R.string.record_waist_view, viewRecord.getWaist()));
         }
 
@@ -66,20 +64,15 @@ public class ViewRecordActivity extends AppCompatActivity {
             hipView.setText(getString(R.string.record_hip_view1));
         }
         else {
-            //hipView.setText("Hip: " + viewRecord.getHip() + "inches");
             hipView.setText(getString(R.string.record_hip_view, viewRecord.getHip()));
         }
 
         if(viewRecord.getInseam().equals("")){
-            hipView.setText(getString(R.string.record_inseam_view1));
+            inseamView.setText(getString(R.string.record_inseam_view1));
         }
         else {
-            //inseamView.setText("Inseam: " + viewRecord.getInseam() + "inches");
             inseamView.setText(getString(R.string.record_inseam_view, viewRecord.getInseam()));
         }
-
-        //commentView.setText("Comment: " + viewRecord.getComment() + "");
-        inseamView.setText(getString(R.string.record_comment_view, viewRecord.getComment()));
 
     }
 }

@@ -2,29 +2,28 @@ package com.example.vuk.vuk_sizebook;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
-import java.util.ArrayList;
 import java.util.Calendar;
+
+/*
+    EditRecordActivity is screen that appears when user wants to edits an already existent record
+    EditRecordActivity returns updated Records to MainActivity through the use of intents.
+    EditRecordActivity error checks user input to make sure the name field is always included and that
+    numbers are only decimals to 1 decimal place.
+ */
 
 public class EditRecordActivity extends AppCompatActivity {
 
-    private Button completeButton;
-
     private EditText nameEdit, inseamEdit, bustEdit, waistEdit, chestEdit, neckEdit, hipEdit, commentEdit, dateEdit;
-
-    private Record editRecord, newRecord;
-
-    private int positionRecord, error;
-
+    private Record newRecord;
+    private int positionRecord;
     private RecordList editRecordList ;
-
     private String regexStr;
 
     @Override
@@ -32,9 +31,11 @@ public class EditRecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_record);
 
-        completeButton = (Button)findViewById(R.id.editSubmitButton);
+        Button completeButton = (Button) findViewById(R.id.editSubmitButton);
 
-        regexStr =  "^([0-9]+(\\.[0-9]{1})?)?$";
+        //regexStr =  "^([0-9]+(\\.[0-9]{1})?)?$";
+        //correct decimal input format
+        regexStr =  "^(\\d*\\.\\d{1})?$";
 
         final EditText[] editTextArray = new EditText[]{
                 nameEdit = (EditText) findViewById(R.id.editNameText),
@@ -48,18 +49,18 @@ public class EditRecordActivity extends AppCompatActivity {
                 commentEdit = (EditText) findViewById(R.id.editCommentText),
         };
 
-        editRecord = (Record) getIntent().getSerializableExtra("editRecord");
+        Record editRecord = (Record) getIntent().getSerializableExtra("editRecord");
         positionRecord = getIntent().getIntExtra("editPosition", 0);
         editRecordList = (RecordList) getIntent().getSerializableExtra("editRecordList");
 
 
         createEditSetup(editRecord);
 
+        //date calendar for user to pick from
         dateEdit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 //To show current date in the datepicker
                 Calendar mcurrentDate=Calendar.getInstance();
                 int mYear=mcurrentDate.get(Calendar.YEAR);
@@ -68,8 +69,6 @@ public class EditRecordActivity extends AppCompatActivity {
 
                 DatePickerDialog mDatePicker=new DatePickerDialog(EditRecordActivity.this, new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                        // TODO Auto-generated method stub
-                    /*      Your code   to get date and time    */
                         dateEdit.setText(selectedyear + "-" + selectedmonth + "-" + selectedday);
                     }
                 },mYear, mMonth, mDay);
@@ -77,14 +76,10 @@ public class EditRecordActivity extends AppCompatActivity {
                 mDatePicker.show();  }
         });
 
+        //submitting edit record button, performs error check on input fields before results are returned to MainActivity using intents
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (nameEdit.getText().toString().equals("")) {
-//                    nameEdit.setError("Name is a mandatory field");
-//                }
-
-                //else if(!nameEdit.getText().toString().equals("")){
                 if(errorCheck(editTextArray)){
                     newRecord = new Record();
                     newRecord.setName(nameEdit.getText().toString());
@@ -99,7 +94,6 @@ public class EditRecordActivity extends AppCompatActivity {
 
                     editRecordList.getRecordList().set(positionRecord, newRecord);
                     Intent returnIntent = new Intent();
-                    //returnIntent.putExtra("Edit Result", newRecord);
                     returnIntent.putExtra("Edit Result", editRecordList);
                     setResult(RESULT_OK, returnIntent);
                     finish();
@@ -109,6 +103,7 @@ public class EditRecordActivity extends AppCompatActivity {
 
     }
 
+    //displays record information for user to look at before editing it.
     public void createEditSetup(Record editRecord){
         nameEdit.setText(editRecord.getName());
         dateEdit.setText(editRecord.getDate());
@@ -121,9 +116,10 @@ public class EditRecordActivity extends AppCompatActivity {
         commentEdit.setText(editRecord.getComment());
     }
 
+    //error checks all input fields at once
     public Boolean errorCheck(EditText[] editTextArray){
 
-        error = 0;
+        int error = 0;
         for (int i = 0; i < editTextArray.length; i++){
             if(i == 0 ){
                 if(editTextArray[i].getText().toString().equals("")){
@@ -132,6 +128,7 @@ public class EditRecordActivity extends AppCompatActivity {
                 }
             }
 
+            //no need to check comment and date fields
             else if(i == 8 | i == 1){
 
             }
@@ -151,24 +148,3 @@ public class EditRecordActivity extends AppCompatActivity {
     }
 
 }
-//dateEdit.setOnClickListener(new View.OnClickListener() {
-//@Override
-//public void onClick(View v) {
-//
-//        DatePickerDialog.onDateSetListener dpd = new DatePickerDialog.OnDateSetListener(){
-//
-//        }
-//        }
-//        });
-//
-//        dateEdit.setOnClickListener(new View.OnClickListener() {
-//@Override
-//public void onClick(View v) {
-//        Calendar currentDate = Calendar.getInstance();
-//        int year = currentDate.get(Calendar.YEAR);
-//        int month = currentDate.get(Calendar.MONTH);
-//        int day = currentDate.get(Calendar.DAY_OF_MONTH);
-//
-//        DatePickerDialog datePicker
-//        }
-//        });

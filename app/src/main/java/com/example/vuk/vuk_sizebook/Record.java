@@ -1,10 +1,14 @@
 package com.example.vuk.vuk_sizebook;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Vuk on 1/22/2017.
+ */
+
+/*
+    Record class contains all attributes and methods that are used to create/design a record.
+    Record class is serializable so that it becomes passable between intents
  */
 
 public class Record implements Serializable {
@@ -13,7 +17,6 @@ public class Record implements Serializable {
     private String chest;
     private String waist;
     private String inseam;
-    //private Date date;
     private String date;
     private String neck;
     private String hip;

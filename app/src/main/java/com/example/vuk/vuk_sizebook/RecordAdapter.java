@@ -8,8 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 /**
@@ -19,6 +17,12 @@ import java.util.ArrayList;
 /** Source from where RecordAdapter class is based from
 https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
  **/
+
+/*
+    RecordAdapter class is what is used to bridge our data source (Array of records) to be displayed in the
+    adapter view (listview located in MainActivity).
+    RecordAdapter allows for customization of how the data is displayed inside the listview
+ */
 
 public class RecordAdapter extends ArrayAdapter<Record> {
 
@@ -37,16 +41,13 @@ public class RecordAdapter extends ArrayAdapter<Record> {
         }
 
         TextView tvName = (TextView) convertView.findViewById(R.id.nameText);
-        //TextView tvDate = (TextView) convertView.findViewById(R.id.inseamText);
         TextView tvBust = (TextView) convertView.findViewById(R.id.bustText);
         TextView tvChest = (TextView) convertView.findViewById(R.id.chestText);
         TextView tvWaist = (TextView) convertView.findViewById(R.id.waistText);
         TextView tvInseam = (TextView) convertView.findViewById(R.id.inseamText);
 
-
-
+        //if text is empty, then it doesn't display the result in the listview
         tvName.setText(record.getName());
-        //tvDate.setText(record.getDate());
 
         if(record.getBust().equalsIgnoreCase("")){
             tvBust.setVisibility(View.GONE);
@@ -54,7 +55,7 @@ public class RecordAdapter extends ArrayAdapter<Record> {
         else {
             tvBust.setText("Bust: " + record.getBust() + " inches");
         }
-//
+
         if(record.getChest().equalsIgnoreCase("")){
             tvChest.setVisibility(View.GONE);
         }

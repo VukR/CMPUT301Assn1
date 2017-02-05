@@ -15,22 +15,19 @@ import java.util.Calendar;
  * How to make the regex
  */
 
-/**
- * http://stackoverflow.com/questions/17808373/popup-datepicker-for-edittext
- * DatePicker copied from here
+/*
+    AddRecordActivity is screen that appears when user wants to create a new Record
+    AddRecordActivity returns newly created Records to MainActivity through the use of intents.
+    AddRecordActivity error checks user input to make sure the name field is always included and that
+    numbers are only decimals to 1 decimal place.
+
  */
 
 public class AddRecordActivity extends AppCompatActivity {
 
-    private Button completeButton;
-
     private EditText nameEdit, dateEdit, neckEdit, inseamEdit, bustEdit, waistEdit, commentEdit, chestEdit, hipEdit;
-
     private Record newRecord;
-
     private String regexStr;
-
-    private Integer error;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +35,10 @@ public class AddRecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_record);
 
         //regexStr =  "^([0-9]+(\\.[0-9]{1})?)?$";
+        //correct decimal input format
         regexStr =  "^(\\d*\\.\\d{1})?$";
 
-        completeButton = (Button)findViewById(R.id.completeRecordButton);
+        Button completeButton = (Button) findViewById(R.id.completeRecordButton);
 
         final EditText[] editTextArray = new EditText[]{
             nameEdit = (EditText) findViewById(R.id.addNameText),
@@ -54,11 +52,15 @@ public class AddRecordActivity extends AppCompatActivity {
             commentEdit = (EditText) findViewById(R.id.addCommentText),
         };
 
+        /**
+         * http://stackoverflow.com/questions/17808373/popup-datepicker-for-edittext
+         * DatePicker copied from here
+         */
+        //date calendar for user to pick from
         dateEdit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 //To show current date in the datepicker
                 Calendar mcurrentDate=Calendar.getInstance();
                 int mYear=mcurrentDate.get(Calendar.YEAR);
@@ -67,8 +69,6 @@ public class AddRecordActivity extends AppCompatActivity {
 
                 DatePickerDialog mDatePicker=new DatePickerDialog(AddRecordActivity.this, new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
-                        // TODO Auto-generated method stub
-                    /*      Your code   to get date and time    */
                         dateEdit.setText(selectedyear + "-" + (selectedmonth + 1) +  "-" + selectedday);
                     }
                 },mYear, mMonth, mDay);
@@ -76,6 +76,7 @@ public class AddRecordActivity extends AppCompatActivity {
                 mDatePicker.show();  }
         });
 
+        //submitting record button, performs error check on input fields before results are returned to MainActivity using intents
         completeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -101,9 +102,10 @@ public class AddRecordActivity extends AppCompatActivity {
 
     }
 
+    //error checks all input fields at once
     public Boolean errorCheck(EditText[] editTextArray){
 
-        error = 0;
+        Integer error = 0;
         for (int i = 0; i < editTextArray.length; i++){
             if(i == 0 ){
                 if(editTextArray[i].getText().toString().equals("")){
@@ -112,6 +114,7 @@ public class AddRecordActivity extends AppCompatActivity {
                 }
             }
 
+            //no need to check comment and date fields
             else if(i == 8 | i == 1){
 
             }
