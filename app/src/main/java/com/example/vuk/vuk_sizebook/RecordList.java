@@ -23,7 +23,7 @@ public class RecordList implements Serializable {
         recordList.add(record);
     }
 
-    public Record getStudent(int pos){
+    public Record getRecord(int pos){
         return recordList.get(pos);
     }
 

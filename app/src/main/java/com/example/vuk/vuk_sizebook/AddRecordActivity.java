@@ -119,7 +119,7 @@ public class AddRecordActivity extends AppCompatActivity {
 
             }
             else if(!editTextArray[i].getText().toString().trim().matches(regexStr)){
-                editTextArray[i].setError("Measurement must be a whole number or up 1 decimal place");
+                editTextArray[i].setError("Measurement must be to one 1 decimal place");
                 error = 1;
             }
         }

@@ -35,6 +35,6 @@
     <string name = "record_hip_view1"> Hip: </string>
     <string name = "record_inseam_view"> Inseam: %1$s in </string>
     <string name = "record_inseam_view1"> Inseam: </string>
-    <string name = "record_comment_view"> Comments: %1$s  </string>
+    <string name = "record_comment_view"> Comments: \n%1$s  </string>
 
 </resources>
