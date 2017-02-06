@@ -12,7 +12,7 @@ import java.util.ArrayList;
     RecordList lass is serializable so that it becomes passable between intents
  */
 
-public class RecordList implements Serializable {
+public class    RecordList implements Serializable {
     private ArrayList<Record> recordList;
 
     public RecordList(){

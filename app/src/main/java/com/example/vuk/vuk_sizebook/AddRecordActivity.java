@@ -11,10 +11,6 @@ import android.widget.EditText;
 
 import java.util.Calendar;
 
-/**http://stackoverflow.com/questions/308122/simple-regular-expression-for-a-decimal-with-a-precision-of-2
- * How to make the regex
- */
-
 /*
     AddRecordActivity is screen that appears when user wants to create a new Record
     AddRecordActivity returns newly created Records to MainActivity through the use of intents.
@@ -34,9 +30,9 @@ public class AddRecordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
 
-        //regexStr =  "^([0-9]+(\\.[0-9]{1})?)?$";
         //correct decimal input format
-        regexStr =  "^(\\d*\\.\\d{1})?$";
+        regexStr =  "^([0-9]+(\\.[0-9]{1})?)?$";
+        //regexStr =  "^(\\d*\\.\\d{1})?$";
 
         Button completeButton = (Button) findViewById(R.id.completeRecordButton);
 

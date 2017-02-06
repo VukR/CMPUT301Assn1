@@ -175,6 +175,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+        Loading and reading from file, is fro lonely twitter lab example
+     */
+
     private void loadFromFile() {
         try {
             FileInputStream fis = openFileInput(FILENAME);

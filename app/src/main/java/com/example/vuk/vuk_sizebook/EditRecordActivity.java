@@ -33,9 +33,9 @@ public class EditRecordActivity extends AppCompatActivity {
 
         Button completeButton = (Button) findViewById(R.id.editSubmitButton);
 
-        //regexStr =  "^([0-9]+(\\.[0-9]{1})?)?$";
         //correct decimal input format
-        regexStr =  "^(\\d*\\.\\d{1})?$";
+        regexStr =  "^([0-9]+(\\.[0-9]{1})?)?$";
+        //regexStr =  "^(\\d*\\.\\d{1})?$";
 
         final EditText[] editTextArray = new EditText[]{
                 nameEdit = (EditText) findViewById(R.id.editNameText),
